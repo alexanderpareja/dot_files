@@ -1,0 +1,62 @@
+# i3status configuration file.
+# see "man i3status" for documentation.
+
+# It is important that this file is edited as UTF-8.
+# The following line should contain a sharp s:
+# ß
+# If the above line is not correctly displayed, fix your editor first!
+
+general {
+  output_format = "i3bar"
+  colors = true
+  color_good = "#50FA7B"
+  color_degraded = "#FFB86C"
+  color_bad = "#FF5555"
+}
+
+#order += "ipv6"
+#order += "wireless _first_"
+order += "ethernet _first_"
+order += "wireless _first_"
+#order += "battery all"
+order += "disk /"
+order += "load"
+order += "memory"
+order += "tztime local"
+order += "volume master"
+
+ethernet _first_ {
+        format_up = "Ethernet: %speed"
+        format_down = "Ethernet: Off"
+}
+
+wireless _first_ {
+        format_up = "WiFi: %bitrate"
+        format_down = "WiFi: Off"
+}
+
+disk "/" {
+        format = "Storage Available: %avail"
+}
+
+load {
+        format = "CPU Load: %1min"
+}
+
+memory {
+        format = "RAM Usage: %used"
+        #threshold_degraded = "1G"
+        #format_degraded = "MEMORY < %available"
+}
+
+tztime local {
+        format = "%B %d, %Y   %H:%M"
+}
+
+volume master {
+        format = "Volume: %volume"
+        format_muted = "Muted (%volume)"
+        device = "default"
+        mixer = "Master"
+        mixer_idx = 0
+}
